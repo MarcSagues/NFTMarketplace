@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import moment from "moment";
 import useAudioPlayer from "../hooks/useAudioPlayer";
 import { Icon } from "@iconify/react";
-import momentDurationFormatSetup from "moment-duration-format";
+import "moment-duration-format";
 import { ThemeContext } from "../context/ThemeContext";
 
 export const AudioPlayer = ({ audioId, audio, imagePreview, openPreview }) => {

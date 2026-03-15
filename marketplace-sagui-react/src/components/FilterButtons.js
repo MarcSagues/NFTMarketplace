@@ -38,7 +38,7 @@ const FilterButton = ({ option, filtersSelected, onSelection }) => {
     } else {
       setIsSelected(filtersSelected.includes(option.name));
     }
-  }, [filtersSelected]);
+  }, [filtersSelected, option.contractAddress, option.name]);
 
   return (
     <button
@@ -53,6 +53,7 @@ const FilterButton = ({ option, filtersSelected, onSelection }) => {
     >
       {option.image && (
         <img
+          alt={option.name}
           className={`${option.disabled && "opacity-50"}`}
           src={option.image}
           width={24}

@@ -8,7 +8,7 @@ export default function FiltersSelectList({
   filtersSelected,
   notFoundText,
 }) {
-  const [{ literals }] = useStateContext();
+  const [{ lang }] = useStateContext();
   const [searchText, setSearchText] = useState("");
   const [filtered, setFiltered] = useState(list);
   const searchItems = (query) => {
@@ -17,7 +17,7 @@ export default function FiltersSelectList({
 
   useEffect(() => {
     if (searchText.length > 0) {
-      let filter = filtered.filter((item) => {
+      let filter = list.filter((item) => {
         if (item.name.toLowerCase().includes(searchText.toLowerCase())) {
           return item;
         }
@@ -26,7 +26,7 @@ export default function FiltersSelectList({
     } else {
       setFiltered(list);
     }
-  }, [searchText]);
+  }, [searchText, list]);
   return (
     <div className="flex flex-col bg-gray-100 dark:bg-dark-3  justify-center gap-4 w-full h-30 p-3 border-t border-gray-300   ">
       <div className="flex border-2 rounded">
@@ -75,7 +75,7 @@ const ListItem = ({ item, onClick, filtersSelected }) => {
       let sel = filtersSelected.find((filter) => filter.name === item.name);
       setIsSelected(sel ? true : false);
     }
-  }, [filtersSelected]);
+  }, [filtersSelected, item.contractAddress, item.name]);
   return (
     <div
       onClick={handleSelect}
